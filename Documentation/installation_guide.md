@@ -1,6 +1,6 @@
 # Installation Guide
 
-# Overview
+## Overview
 
 The Bubble Evaluation Tool was developed and tested using:
 
@@ -11,6 +11,7 @@ The Bubble Evaluation Tool was developed and tested using:
 - Detectron2
 
 The software combines:
+
 - Detectron2 Mask R-CNN
 - PyTorch CNN classification
 - OpenCV image processing
@@ -19,12 +20,11 @@ The software combines:
 
 ---
 
-# Recommended Environment
-
-## Software
+## Recommended Environment
 
 Recommended setup:
 
+- Windows
 - Anaconda
 - Jupyter Notebook
 - Python 3.10
@@ -32,9 +32,9 @@ Recommended setup:
 
 ---
 
-# Install Anaconda
+## Install Anaconda
 
-Download and install:
+Download and install Anaconda:
 
 https://www.anaconda.com/download
 
@@ -42,49 +42,51 @@ Install using default settings.
 
 ---
 
-# Create Conda Environment
+## Create Conda Environment
 
-Open:
+Open Anaconda Prompt.
 
-```
-Anaconda Prompt
-```
+Create the environment:
 
-Create environment:
-
-```
+```bash
 conda create -n bubbletracker python=3.10
 ```
 
-Activate environment:
+Activate the environment:
 
-```
+```bash
 conda activate bubbletracker
 ```
 
 ---
 
-# Install Jupyter Notebook
+## Install Jupyter Notebook
 
+```bash
+conda install jupyter ipykernel
 ```
-conda install jupyter
+
+Register the environment as a Jupyter kernel:
+
+```bash
+python -m ipykernel install --user --name bubbletracker --display-name "Python (bubbletracker)"
 ```
 
 Launch Jupyter:
 
-```
+```bash
 jupyter notebook
 ```
 
 ---
 
-# Install PyTorch
+## Install PyTorch
 
 Install the PyTorch version compatible with your CUDA version.
 
-Example:
+Example CPU/default install:
 
-```
+```bash
 pip install torch torchvision torchaudio
 ```
 
@@ -94,9 +96,10 @@ https://pytorch.org/get-started/locally/
 
 ---
 
-# Install Detectron2
+## Install Detectron2
 
 Detectron2 installation depends on:
+
 - operating system
 - CUDA version
 - PyTorch version
@@ -107,90 +110,106 @@ https://detectron2.readthedocs.io/
 
 Example:
 
-```
-pip install 'git+https://github.com/facebookresearch/detectron2.git'
+```bash
+pip install "git+https://github.com/facebookresearch/detectron2.git"
 ```
 
 ---
 
-# Install Additional Packages
+## Install Additional Packages
 
 Install required libraries:
 
-```
-pip install opencv-python
-pip install numpy
-pip install pandas
-pip install scipy
-pip install filterpy
-pip install pillow
+```bash
+pip install opencv-python numpy pandas scipy filterpy pillow
 ```
 
 Tkinter is typically included with standard Python installations.
 
 ---
 
-# Repository Setup
+## Repository Setup
 
-Clone repository:
+Clone the repository:
 
+```bash
+git clone https://github.com/oliviaallen27/Bubble-Evaluation-Tool.git
 ```
-git clone https://github.com/YOUR_USERNAME/Bubble-Evaluation-Tool.git
-```
 
-Move into repository:
+Move into the repository:
 
-```
+```bash
 cd Bubble-Evaluation-Tool
 ```
 
 ---
 
-# Model Files
+## Model Files
 
-Large Mask R-CNN model weight files are not included in the repository due to GitHub size limitations.
+Large Mask R-CNN model weight files are not included in the repository due to GitHub file-size limitations.
 
-Place required model files into the appropriate directories before running the software.
+Place required Mask R-CNN model files into the appropriate local directories before running the software.
 
 Expected structure:
 
-```
+```text
 Models/
-├── Mask_RCNN/
+├── Mask RCNN/
+│   ├── Water/
+│   ├── SPT3/
+│   └── Synthetic/
 └── CNN/
+    ├── Water/
+    ├── SPT3/
+    └── Synthetic/
+```
+
+Each Mask R-CNN model folder should contain:
+
+```text
+model_final.pth
+config.yaml
 ```
 
 The Detectron2 `config.yaml` file must exist in the same folder as the Mask R-CNN weights.
 
 ---
 
-# Running the Software
+## Running the Software
 
 Launch Jupyter Notebook:
 
-```
+```bash
 jupyter notebook
 ```
 
-Open the notebook containing the Bubble Tracker GUI and run first code cell.
+Open:
+
+```text
+Software/Bubbly_Flow_Analysis.ipynb
+```
+
+Select the `Python (bubbletracker)` kernel.
+
+Run the main GUI code cell.
 
 The GUI window will appear after execution.
 
 ---
 
-# Typical Workflow
+## Typical Workflow
 
-1. Launch Jupyter Notebook
-2. Open Bubble Tracker notebook
-3. Run all notebook cells
-4. Select input data and model weights
-5. Configure analysis settings
-6. Run tracking
-7. Review exported outputs
+1. Launch Jupyter Notebook.
+2. Open the Bubble Tracker notebook.
+3. Run the main GUI code cell.
+4. Select input data and model weights.
+5. Configure analysis settings.
+6. Run tracking.
+7. Review exported outputs.
 
 ---
 
-# Notes
+## Notes
 
 The software was primarily developed and tested on Windows systems using Anaconda environments.
 

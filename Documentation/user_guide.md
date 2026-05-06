@@ -1,58 +1,78 @@
 # User Guide
 
-# Bubble Tracker GUI
+## Bubble Tracker GUI
 
 The Bubble Tracker GUI is an interactive Python/Jupyter-based application developed to perform automated bubble detection, tracking, and measurement from CNTR video data and TIFF image sequences.
 
 The software combines:
+
 - Detectron2 Mask R-CNN instance segmentation
 - CNN-based bubble verification
 - Kalman filter multi-object tracking
-- Assignment-based track association
-- Physical scaling and dimensionless parameter calculations
+- assignment-based track association
+- physical scaling and dimensionless parameter calculations
 
-The application supports both still and spinning experimental configurations and exports annotated videos and quantitative measurement data for analysis.
+The application supports still-mode processing and includes an experimental spinning-mode extension. It exports annotated videos and quantitative measurement data for analysis.
+
+For setup instructions, see the [Installation Guide](installation_guide.md).  
+For spinning-mode details, see [Spinning Mode Notes](spinning_mode.md).
 
 ---
 
-# Operating Modes
+## Notebook Location
 
-## Still Mode
+The main GUI notebook is located at:
+
+```text
+../Software/Bubbly_Flow_Analysis.ipynb
+```
+
+Open this notebook in Jupyter Notebook and run the main GUI code cell to launch the interface.
+
+---
+
+## Operating Modes
+
+### Still Mode
 
 Still mode assumes a constant frame rate specified by the user.
 
 Timing is computed using:
 
-```
+```text
 time = frame_number / FPS
 ```
 
-This mode is intended for standard non-rotating experiments.
+This mode is intended for standard non-rotating experiments and was used for the primary thesis analysis.
 
 ---
 
-## Spinning Mode
+### Spinning Mode
 
 Spinning mode is designed for rotating-apparatus experiments.
 
 Features include:
+
 - OCR/template-based timestamp extraction
-- Burst-based processing
-- Optional frame flipping for alternating orientation
-- Apparatus stabilization using top-center bar alignment
-- Effective radial acceleration calculations
+- burst-based processing
+- optional frame flipping for alternating orientation
+- apparatus stabilization using top-center bar alignment
+- effective radial acceleration calculations
 
 Timing is extracted directly from on-screen timestamps rather than a fixed FPS value.
 
+Spinning mode is experimental and has not yet been fully validated using spinning experimental datasets.
+
 ---
 
-# GUI Inputs and Configuration Parameters
+## GUI Inputs and Configuration Parameters
 
-## Input Video
+### Input Video
 
 Path to the video file to be analyzed.
 
 Supported formats include:
+
 - `.avi`
 - `.mp4`
 - `.mov`
@@ -63,11 +83,12 @@ The video is processed frame-by-frame.
 
 ---
 
-## Input TIFF Folder
+### Input TIFF Folder
 
 Optional folder containing TIFF image sequences.
 
 Supported formats:
+
 - `.tif`
 - `.tiff`
 
@@ -75,40 +96,43 @@ Images are loaded sequentially using natural filename sorting.
 
 ---
 
-## Mask R-CNN Weights
+### Mask R-CNN Weights
 
 Path to the trained Detectron2 Mask R-CNN model weights (`.pth` or `.pt`).
 
 The corresponding `config.yaml` file must exist in the same directory and is automatically loaded during initialization.
 
+Large Mask R-CNN weights are not included in this repository due to GitHub file-size limitations.
+
 ---
 
-## CNN Weights
+### CNN Weights
 
 Path to the trained secondary CNN classifier weights used to verify detections and suppress false positives.
 
 ---
 
-## Output Folder
+### Output Folder
 
 Directory where all generated outputs are written.
 
 Outputs may include:
-- Annotated videos
-- Predicted mask videos
+
+- annotated videos
+- predicted mask videos
 - CSV files
-- Debug logs
-- Debug videos
+- debug logs
+- debug videos
 
 ---
 
-## Filename Prefix
+### Filename Prefix
 
 Base filename used for all outputs.
 
 Example:
 
-```
+```text
 experiment_01_filtered.mp4
 experiment_01_tracked.csv
 experiment_01_averages.csv
@@ -118,17 +142,18 @@ If left blank, the input filename is used automatically.
 
 ---
 
-## FPS (Still Mode)
+### FPS Still Mode
 
-Frame rate used for timing calculations in Still mode.
+Frame rate used for timing calculations in still mode.
 
-Ignored in Spinning mode.
+This value is ignored in spinning mode.
 
 ---
 
-## Max Assign Distance (px)
+### Max Assign Distance px
 
 Maximum allowed pixel distance between:
+
 - predicted track position
 - detected bubble centroid
 
@@ -136,13 +161,13 @@ during association.
 
 ---
 
-## Max Misses (frames)
+### Max Misses frames
 
 Maximum number of consecutive frames a track may remain unmatched before being terminated.
 
 ---
 
-## Ignore Text (px)
+### Ignore Text px
 
 Vertical pixel threshold used to suppress detections near on-screen text overlays.
 
@@ -150,7 +175,7 @@ Detections above this threshold are discarded.
 
 ---
 
-## Bubble Diameter Limits (px)
+### Bubble Diameter Limits px
 
 Minimum and maximum allowable bubble diameters.
 
@@ -158,9 +183,10 @@ Detections outside this range are rejected.
 
 ---
 
-## Scale (Inches per Pixel)
+### Scale Inches per Pixel
 
 Optional spatial calibration used to convert:
+
 - diameters
 - velocities
 - positions
@@ -171,34 +197,38 @@ When provided, dimensionless parameters are computed.
 
 ---
 
-## Liquid Selection
+### Liquid Selection
 
 Working liquid used for dimensionless parameter calculations.
 
 Currently supported:
+
 - Water
 - SPT3
 
 Properties include:
+
 - viscosity
 - surface tension
 - density
 
 ---
 
-## Gas Selection
+### Gas Selection
 
 Gas phase used for density calculations.
 
 Currently supported:
+
 - Air
 - Nitrogen
 
 ---
 
-## Overlay Color
+### Overlay Color
 
 Color used for:
+
 - masks
 - outlines
 - labels
@@ -208,9 +238,9 @@ in exported videos.
 
 ---
 
-# Spinning Mode Parameters
+## Spinning Mode Parameters
 
-## RPM
+### RPM
 
 Rotational speed of the experimental apparatus.
 
@@ -218,25 +248,27 @@ Used to compute effective radial acceleration.
 
 ---
 
-## Frames per Burst
+### Frames per Burst
 
 Number of frames contained within each rotational burst.
 
 ---
 
-## Reset IDs per Burst
+### Reset IDs per Burst
 
 When enabled:
+
 - active tracks are cleared at the beginning of each burst
 - globally unique display IDs are preserved
 
 ---
 
-# Output Options
+## Output Options
 
-## Save Debug Outputs
+### Save Debug Outputs
 
 Enables export of:
+
 - debug videos
 - debug overlays
 - assignment diagnostics
@@ -245,19 +277,20 @@ Enables export of:
 
 ---
 
-## Save Measurement CSVs
+### Save Measurement CSVs
 
 Exports:
+
 - `tracked.csv`
 - `averages.csv`
 
 ---
 
-# Generated Outputs
+## Generated Outputs
 
-## Filtered Video
+### Filtered Video
 
-```
+```text
 {prefix}_filtered.mp4
 ```
 
@@ -265,9 +298,9 @@ Final annotated video showing accepted tracks.
 
 ---
 
-## Predicted Mask Video
+### Predicted Mask Video
 
-```
+```text
 {prefix}_pred_mask.mp4
 ```
 
@@ -275,13 +308,14 @@ Binary mask visualization of predicted bubble regions.
 
 ---
 
-## Tracked CSV
+### Tracked CSV
 
-```
+```text
 {prefix}_tracked.csv
 ```
 
 Contains frame-resolved measurements including:
+
 - bubble ID
 - centroid position
 - diameter
@@ -290,22 +324,36 @@ Contains frame-resolved measurements including:
 
 ---
 
-## Averages CSV
+### Averages CSV
 
 ```text
 {prefix}_averages.csv
 ```
 
 Contains:
+
 - per-bubble averages
 - overall averages
 - GUI settings used during the run
 
 ---
 
-# Dimensionless Parameters
+## Sample Data
+
+Representative sample files are included here:
+
+- [Sample Input](../Sample_Data/Input/)
+- [Sample Output](../Sample_Data/Output/)
+- [Sample Data README](../Sample_Data/README.md)
+
+These files demonstrate the expected input and output structure.
+
+---
+
+## Dimensionless Parameters
 
 When scale information is available, the software computes:
+
 - Reynolds number
 - Eötvös number
 - Weber number
@@ -316,21 +364,22 @@ When scale information is available, the software computes:
 
 ---
 
-# Typical Workflow
+## Typical Workflow
 
-1. Select input video or TIFF folder
-2. Select model weight files
-3. Choose output folder
-4. Configure analysis settings
-5. Select operating mode
-6. Run tracking
-7. Review exported videos and CSV files
+1. Select input video or TIFF folder.
+2. Select model weight files.
+3. Choose output folder.
+4. Configure analysis settings.
+5. Select operating mode.
+6. Run tracking.
+7. Review exported videos and CSV files.
 
 ---
 
-# Software Requirements
+## Software Requirements
 
 Main dependencies include:
+
 - Python
 - Detectron2
 - PyTorch
@@ -342,10 +391,12 @@ Main dependencies include:
 - Pillow
 - Tkinter
 
+See the [Installation Guide](installation_guide.md) for setup instructions.
+
 ---
 
-# Notes
+## Notes
 
-Large Mask R-CNN model weights are not included in the repository due to GitHub file size limitations.
+Large Mask R-CNN model weights are not included in the repository due to GitHub file-size limitations.
 
 The spinning-mode functionality is considered experimental and extends beyond the primary thesis methodology.
