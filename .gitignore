@@ -1,0 +1,21 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+.env
+venv/
+.env/
+
+.DS_Store
+
+*.zip
+
+.idea/
+.vscode/
+
+.ipynb_checkpoints/
+anaconda_projects/
+Models/Mask RCNN/**/model_final.pth
+
+*.pptm
