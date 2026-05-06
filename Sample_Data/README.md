@@ -21,53 +21,27 @@ Large experimental datasets are not included in the repository due to file size 
 
 
 
-\## Training Data
+\# Training Sample Data
 
 
 
-Full training datasets are not included in this repository due to file-size limitations.
+This folder shows an example of the expected training-data organization for the Bubble Evaluation Tool.
 
 
 
-The Mask R-CNN training notebook expects a COCO-format dataset with matching image files and annotation JSON files. The annotation file is not useful without the corresponding full image set, so partial training annotations are intentionally not included.
+These files are included only as representative examples of dataset structure and formatting. They are not the complete training datasets used for the thesis, and they are not intended to fully reproduce model training by themselves.
 
 
 
-The CNN classifier training notebook expects positive and negative cropped image folders.
+Full training datasets are excluded from the repository due to file-size limitations.
 
 
 
-Expected local structure:
+\## Expected Mask R-CNN Training Structure
 
 
 
-```text
+Mask R-CNN training expects image files paired with COCO-format annotation files.
 
-Training\_Data/
 
-├── Mask\_RCNN/
-
-│   ├── train\_images/
-
-│   ├── val\_images/
-
-│   ├── train\_annotations.json
-
-│   └── val\_annotations.json
-
-│
-
-└── CNN\_Classification/
-
-&#x20;   ├── train/
-
-&#x20;   │   ├── positive/
-
-&#x20;   │   └── negative/
-
-&#x20;   └── val/
-
-&#x20;       ├── positive/
-
-&#x20;       └── negative/
 

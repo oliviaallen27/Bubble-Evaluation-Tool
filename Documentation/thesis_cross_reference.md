@@ -189,27 +189,91 @@ Related implementation includes:
 
 #### Thesis Content
 
-- model training
+This thesis section describes the training and dataset-development process used to support the automated bubble-analysis framework, including:
+
+- Mask R-CNN model training
+- CNN bubble-verification classifier training
 - annotated experimental data
 - synthetic bubble generation
 - parameterized bubble shapes
 - synthetic motion generation
 - validation datasets
+- model evaluation metrics
 
 #### Related Repository Content
 
+- [Training and Calibration Code](../Software/Training/)
 - [Models](../Models/)
-- [Software](../Software/)
+- [Training Sample Structure](../Sample_Data/Training_Sample/)
 - [Sample Data](../Sample_Data/)
 
 Related implementation includes:
 
-- Mask R-CNN model configuration
+- `TrainModel.ipynb` for Mask R-CNN / Detectron2 training
+- `TrainCNNClassification.ipynb` for CNN bubble-classifier training
+- `Calibration.ipynb` for synthetic bubble generation and calibration-support work
+- Mask R-CNN model configuration files
 - CNN model weights
+- example training-data folder structure
 - synthetic validation support
-- sample input/output data
 
-Note: Full training datasets and large generated datasets are not included due to file-size limitations.
+Note: Full training datasets, full annotation sets, large generated datasets, intermediate training outputs, TensorBoard logs, and large Mask R-CNN model weights are not included due to file-size limitations.
+
+---
+
+## Appendix A – Segmentation Model Training and Diagnostics
+
+#### Thesis Content
+
+Appendix A documents additional training details, including:
+
+- training dataset composition
+- Mask R-CNN training configuration
+- training controls
+- secondary CNN classifier architecture
+- training diagnostics and convergence behavior
+
+#### Related Repository Content
+
+- [Training and Calibration Code](../Software/Training/)
+- [CNN Models](../Models/CNN/)
+- [Mask R-CNN Models](../Models/Mask%20RCNN/)
+
+Related implementation includes:
+
+- Mask R-CNN training notebook
+- CNN classifier training notebook
+- model configuration files
+- saved CNN classifier weights
+- README notes explaining omitted large model files
+
+---
+
+## Appendix C – Synthetic Dataset Generation Methodology
+
+#### Thesis Content
+
+Appendix C documents the synthetic dataset generation methodology, including:
+
+- synthetic bubble motivation
+- bubble parameterization
+- frame generation process
+- noise and imaging effects
+- ground-truth definitions
+- synthetic data limitations
+
+#### Related Repository Content
+
+- [Training and Calibration Code](../Software/Training/)
+- [Training Sample Structure](../Sample_Data/Training_Sample/)
+- [Sample Data](../Sample_Data/)
+
+Related implementation includes:
+
+- `Calibration.ipynb`
+- synthetic bubble generation logic
+- synthetic ground-truth support
+- example dataset-structure documentation
 
 ---
 
