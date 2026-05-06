@@ -55,7 +55,7 @@ The software supports both standard still-mode experiments and rotating-apparatu
 Contains the thesis PDF. The defense presentation is not included because the file exceeds GitHub's standard file-size limit.
 
 ### [Software](Software/)
-Contains the main Bubble Evaluation Tool source code and Jupyter notebooks.
+Contains the main Bubble Evaluation Tool Jupyter notebooks, result-processing notebooks, and training/calibration notebooks.
 
 ### [Models](Models/)
 Contains model configurations, CNN weights, and README files explaining where large Mask R-CNN weights should be placed locally.
@@ -78,6 +78,7 @@ Contains a small representative input video and example output files for demonst
 - [Thesis Cross Reference](Documentation/thesis_cross_reference.md)
 - [Spinning Mode Notes](Documentation/spinning_mode.md)
 - [Sample Data Notes](Sample_Data/README.md)
+- [Training and Calibration Code](../Software/Training/)
 
 ---
 
@@ -118,3 +119,5 @@ The repository contents are mapped to the corresponding thesis sections here:
 Large Mask R-CNN model weight files are not included due to GitHub file size limitations. The required model folders contain README files explaining where local model weights should be placed.
 
 The spinning-mode functionality is an experimental extension beyond the primary thesis methodology.
+
+Full training datasets are not included due to file-size limitations. The training notebooks document the expected local dataset structure, and large datasets should be stored separately on external or institutional storage.
