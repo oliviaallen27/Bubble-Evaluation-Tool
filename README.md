@@ -78,7 +78,7 @@ Contains a small representative input video and example output files for demonst
 - [Thesis Cross Reference](Documentation/thesis_cross_reference.md)
 - [Spinning Mode Notes](Documentation/spinning_mode.md)
 - [Sample Data Notes](Sample_Data/README.md)
-- [Training and Calibration Code](../Software/Training/README.md)
+- [Training and Calibration Code](Software/Training/README.md)
 
 ---
 
