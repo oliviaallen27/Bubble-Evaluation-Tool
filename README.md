@@ -8,7 +8,7 @@ Propulsion Research Center
 
 ---
 
-# Overview
+## Overview
 
 The Bubble Evaluation Tool combines:
 
@@ -19,11 +19,22 @@ The Bubble Evaluation Tool combines:
 - Dimensionless parameter calculations
 - Experimental spinning-apparatus support
 
-The software supports both standard still-image experiments and rotating-apparatus experiments.
+The software supports both standard still-mode experiments and rotating-apparatus experiments.
 
 ---
 
-# Main Features
+## Repository Index
+
+- [Thesis Materials](Thesis/)
+- [Software](Software/)
+- [Models](Models/)
+- [Documentation](Documentation/)
+- [Figures](Figures/)
+- [Sample Data](Sample_Data/)
+
+---
+
+## Main Features
 
 - Video and TIFF sequence processing
 - Bubble detection and segmentation
@@ -38,59 +49,72 @@ The software supports both standard still-image experiments and rotating-apparat
 
 ---
 
-# Repository Structure
+## Repository Structure
 
-## Thesis/
-Thesis PDF and defense presentation.
+### [Thesis Materials](Thesis/)
+Contains the thesis PDF. The defense presentation is not included because the file exceeds GitHub's standard file-size limit.
 
-## Software/
-Main Bubble Evaluation Tool source code and GUI.
+### [Software](Software/)
+Contains the main Bubble Evaluation Tool source code and Jupyter notebooks.
 
-## Models/
-Model configurations and CNN weights.
+### [Models](Models/)
+Contains model configurations, CNN weights, and README files explaining where large Mask R-CNN weights should be placed locally.
 
-## Documentation/
-Installation guide, user guide, spinning-mode notes, and thesis cross references.
+### [Documentation](Documentation/)
+Contains installation instructions, user guide, spinning-mode notes, and thesis cross references.
 
-## Synthetic_Data/
-Synthetic dataset generation scripts and sample datasets.
+### [Figures](Figures/)
+Contains workflow diagrams, GUI screenshots, and representative segmentation/tracking examples.
 
----
-
-# Documentation
-
-See:
-- `Documentation/user_guide.md`
-- `Documentation/installation_guide.md`
-- `Documentation/thesis_cross_reference.md`
-- `Documentation/spinning_mode.md`
+### [Sample Data](Sample_Data/)
+Contains a small representative input video and example output files for demonstration.
 
 ---
 
-# Example Outputs
+## Documentation
 
-## Processing Workflow
+- [User Guide](Documentation/user_guide.md)
+- [Installation Guide](Documentation/installation_guide.md)
+- [Thesis Cross Reference](Documentation/thesis_cross_reference.md)
+- [Spinning Mode Notes](Documentation/spinning_mode.md)
+- [Sample Data Notes](Sample_Data/README.md)
+
+---
+
+## Thesis Cross Reference
+
+The repository contents are mapped to the corresponding thesis sections here:
+
+[Documentation/thesis_cross_reference.md](Documentation/thesis_cross_reference.md)
+
+---
+
+## Example Outputs
+
+### Processing Workflow
 
 ![Workflow](Figures/workflow_diagram.png)
 
-## GUI – Still Mode
+### GUI – Still Mode
 
-![Still GUI](Figures/gui_still_mode.png)
+![Still GUI](Figures/gui_still_example.png)
 
-## GUI – Spinning Mode
+### GUI – Spinning Mode
 
-![Spinning GUI](Figures/gui_spinning_mode.png)
+![Spinning GUI](Figures/gui_spinning_example.png)
 
-## Example Segmentation Output
+### Example Segmentation Output
 
 ![Segmentation](Figures/segmentation_example.png)
 
-## Example Tracking Output
+### Example Tracking Output
 
 ![Tracking](Figures/tracking_example.png)
 
-# Notes
+---
 
-Large Mask R-CNN model weight files are not included due to GitHub file size limitations.
+## Notes
+
+Large Mask R-CNN model weight files are not included due to GitHub file size limitations. The required model folders contain README files explaining where local model weights should be placed.
 
 The spinning-mode functionality is an experimental extension beyond the primary thesis methodology.
