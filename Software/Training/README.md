@@ -93,10 +93,9 @@ The notebook includes support for:
 
 Full training datasets are not included in this repository due to file-size limitations.
 
-The Mask R-CNN training notebook expects a COCO-format dataset with matching image files and annotation JSON files. The annotation file is not useful without the corresponding full image set, so partial training annotations are intentionally not included.
+The Mask R-CNN training notebook expects a COCO-format dataset with matching image files and annotation JSON files. The setup notebooks in `Software/Training/setup/` can be used to convert MATLAB-exported pixel label masks into the required COCO `train.json` and `val.json` files. The annotation file is not useful without the corresponding full image set, so partial training annotations are intentionally not included.
 
-The CNN classifier training notebook expects positive and negative cropped image folders.
-
+The CNN classifier training notebook expects positive and negative cropped image folders. The setup notebooks can be used to crop positive bubble patches from labeled masks and create negative/background training images.
 Expected local structure:
 
 ```text
@@ -119,6 +118,44 @@ Training_Data/
 Large datasets should be stored separately on external storage, institutional storage, OneDrive, Google Drive, or a lab server.
 
 ---
+
+---
+
+## Dataset Setup Notebooks
+
+Dataset-preparation notebooks are located in:
+
+```text
+Software/Training/setup/
+```
+
+These notebooks should be used before running the model-training notebooks.
+
+The setup folder includes utilities for:
+
+* converting raw images to ordered PNG files
+* preparing images for MATLAB Image Labeler / Pixel Labeler
+* converting MATLAB-exported pixel label masks to COCO JSON format
+* creating positive CNN bubble patches
+* creating negative CNN training images from labeled masks
+
+See the setup documentation here:
+
+```text
+Software/Training/setup/README.md
+```
+
+Recommended order:
+
+```text
+1. Prepare/rename images using the setup notebooks
+2. Label images in MATLAB
+3. Convert MATLAB labels to COCO JSON
+4. Train Mask R-CNN using TrainModel.ipynb
+5. Create CNN positive and negative examples
+6. Train the CNN classifier using TrainCNNClassification.ipynb
+```
+
 
 ## Notes
 
